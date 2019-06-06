@@ -1,0 +1,38 @@
+package com.example.ue_3;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class TxtParser {
+    public static void main(String[] args) throws IOException {
+        String csvFile = "/Users/saubaer/Documents/Visualization_Jung/data/cars.csv";
+        String line = "";
+        String cvsSplitBy = ";";
+        String[][] carList = new String[407][11];
+        // ObservableList<String> items = FXCollections.observableArrayList();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                carList[i] = line.split(cvsSplitBy);
+
+                //items.add(i, carList[i][0]);
+                System.out.println("Country [code= " + Arrays.toString(carList[i]));
+                i++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
